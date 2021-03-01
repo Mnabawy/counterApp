@@ -4,24 +4,31 @@ class Counter extends Component {
 
    state = {
       count: 0,
-      tags: []
+   }
+
+   handleIncrement = () => {
+      console.log(this.state.count)
    }
 
    render() {
       return (
          <div className="ml-4">
-            {this.state.tags.length === 0 && <p> please create a tag</p>}
-            {this.rendringTagsList()}
+            <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+            <button onClick={this.handleIncrement}>Increment</button>
          </div>
       )
    }
 
-   // conditional rendring
-   rendringTagsList() {
-    
-      const tagsList = this.state.tags.map((tag, index) => <li key={index}>{tag}</li>);
-      if (this.state.tags.length === 0) return <p>there are no tags in this list</p>;
-      return <ul>{tagsList}</ul>
+
+   getBadgeClasses() {
+      let classes = "badge m-2 badge-";
+      classes += (this.state.count === 0) ? 'warning' : 'primary';
+   }
+
+   formatCount() {
+      let { count } = this.state
+      if (count === 0) return "Zero"
+      return count;
    }
 }
 
