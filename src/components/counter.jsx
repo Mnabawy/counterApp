@@ -2,12 +2,21 @@ import React, { Component } from 'react';
 
 class Counter extends Component {
 
+   constructor(){
+      super();
+
+      this.handleIncrement = this.handleIncrement.bind(this);
+   }
+
    state = {
       count: 0,
    }
 
-   handleIncrement = () => {
-      console.log(this.state.count)
+
+
+   handleIncrement () {
+      // let { count } = ;
+      this.setState({count: this.state.count++ });
    }
 
    render() {
