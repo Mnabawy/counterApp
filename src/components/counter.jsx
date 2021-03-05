@@ -3,27 +3,28 @@ import React, { Component } from 'react';
 class Counter extends Component {
 
    render() {
+
+      const { counter, onIncrement, onDecrement, onDelete } = this.props
       return (
          <div className="ml-4">
             <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
             <button
-               onClick={() => this.props.onIncrement(this.props.counter)}
+               onClick={() => onIncrement(counter)}
                className="btn btn-info btn-sm m-2">
                Increment
             </button>
-            
+
             <button
-               onClick={() => this.props.onDecrement(this.props.counter)}
+               onClick={() => onDecrement(counter)}
                className="btn btn-info btn-sm m-2">
                Decrement
             </button>
 
             <button
-               onClick={() => this.props.onDelete(this.props.counter.id)}
+               onClick={() => onDelete(counter.id)}
                className="btn btn-danger btn-sm m-2">
                Dalete
             </button>
-
          </div>
       )
    }
