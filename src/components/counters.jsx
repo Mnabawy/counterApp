@@ -3,7 +3,7 @@ import Counter from './counter';
 
 // StateLess Component
 
-const Counters = ({ onReset, onDelete, onDecrement, onIncrement, counters }) => {
+const Counters = ({ onReset, onDelete, onDecrement, onIncrement, counters,active }) => {
    return (
       <>
          <button className="btn btn-info btn-sm m-3" onClick={onReset}>Reset</button>
@@ -15,6 +15,7 @@ const Counters = ({ onReset, onDelete, onDecrement, onIncrement, counters }) => 
                   counter={item}
                   onIncrement={onIncrement}
                   onDecrement={onDecrement}
+                  active={active}
                />
             )
          })}

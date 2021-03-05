@@ -10,11 +10,11 @@ class App extends Component {
 
   state = {
     counters: [
-      { id: 1, value: 2 },
-      { id: 2, value: 0 },
-      { id: 3, value: 0 },
-      { id: 4, value: 3 },
-      { id: 5, value: 1 }
+      { id: 1, value: 2, acitve: false },
+      { id: 2, value: 0, active: false },
+      { id: 3, value: 0, active: false },
+      { id: 4, value: 3, active: false },
+      { id: 5, value: 1, active: false },
     ]
   }
 
@@ -30,7 +30,7 @@ class App extends Component {
     let counters = [...this.state.counters];
     let index = counters.indexOf(counter);
     counters[index] = { ...counter }
-    if(counter.value >0 ||counter.value >0 ){
+    if (counter.value > 0) {
       counters[index].value--;
     }
     this.setState({ counters })
@@ -48,10 +48,12 @@ class App extends Component {
     this.setState({ counters: filterd })
   }
 
+  handleDisable = (counter) => (counter.value > 0 ) ? true : false
+
   render() {
     return (
       <div className="App">
-        <NavBar totalNumber={this.state.counters.filter(item => item.value > 0).length } />
+        <NavBar totalNumber={this.state.counters.filter(item => item.value > 0).length} />
         <main className="container">
           <Counters
             counters={this.state.counters}
@@ -59,6 +61,7 @@ class App extends Component {
             onDecrement={this.handleDecrement}
             onReset={this.handleReset}
             onDelete={this.handleDelete}
+            active={!this.handleDisable}
           />
         </main>
       </div>

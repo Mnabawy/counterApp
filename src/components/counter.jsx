@@ -3,28 +3,42 @@ import React, { Component } from 'react';
 class Counter extends Component {
 
    render() {
-
       const { counter, onIncrement, onDecrement, onDelete } = this.props
       return (
-         <div className="ml-4">
-            <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-            <button
-               onClick={() => onIncrement(counter)}
-               className="btn btn-info btn-sm m-2">
-               Increment
-            </button>
+         <div className="container w-50">
 
-            <button
-               onClick={() => onDecrement(counter)}
-               className="btn btn-info btn-sm m-2">
-               Decrement
-            </button>
+            <div className="row">
+              
+               <div className="col-3">
+                  <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+               </div>
 
-            <button
-               onClick={() => onDelete(counter.id)}
-               className="btn btn-danger btn-sm m-2">
-               Dalete
-            </button>
+               <div className="col-3">
+                  <button
+                     onClick={() => onIncrement(counter)}
+                     className="btn btn-info btn-sm m-2">
+                     <i className="bi bi-file-plus" >+</i>
+                  </button>
+               </div>
+
+               <div className="col-3">
+                  <button
+                     onClick={() => onDecrement(counter)}
+                     disabled={(this.props.counter.value > 0) ? false : true}
+                     className="btn btn-info btn-sm m-2">
+                     <i className="bi bi-file-minus">-</i>
+                  </button>
+               </div>
+
+               <div className="col-3">
+                  <button
+                     onClick={() => onDelete(counter.id)}
+                     className="btn btn-danger btn-sm m-2">
+                     Dalete
+                  </button>
+               </div>
+
+            </div>
          </div>
       )
    }
