@@ -6,13 +6,10 @@ class Counter extends Component {
       const { counter, onIncrement, onDecrement, onDelete } = this.props
       return (
          <div className="container w-50">
-
             <div className="row">
-              
                <div className="col-3">
                   <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
                </div>
-
                <div className="col-3">
                   <button
                      onClick={() => onIncrement(counter)}
@@ -20,7 +17,6 @@ class Counter extends Component {
                      <i className="bi bi-file-plus" >+</i>
                   </button>
                </div>
-
                <div className="col-3">
                   <button
                      onClick={() => onDecrement(counter)}
@@ -29,7 +25,6 @@ class Counter extends Component {
                      <i className="bi bi-file-minus">-</i>
                   </button>
                </div>
-
                <div className="col-3">
                   <button
                      onClick={() => onDelete(counter.id)}
@@ -37,11 +32,11 @@ class Counter extends Component {
                      Dalete
                   </button>
                </div>
-
             </div>
          </div>
       )
    }
+
 
    getBadgeClasses() {
       let classes = "badge m-2 badge-";
